@@ -10,6 +10,6 @@ const Button: React.FC<ButtonProps> = ({text, color}) => {
   return (
     <button style={{ backgroundColor: color }}>{text}</button>
   );
-}
+};
 
 export default Button;

@@ -1,23 +1,39 @@
 .hero-banner {
   background: 
-    linear-gradient(rgba(0, 0, 0, 0.65),
-    rgba(0, 0, 0, 0.65)),
+    linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
     url("./../../../public/assets/movies-background.jpg") center center / cover no-repeat;
   height: 100vh;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   color: white;
   text-align: center;
+  position: relative;
+}
+
+.hero-banner-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 20px;
+}
+
+.hero-banner-buttons {
+  padding-right: 30px;
 }
 
 .hero-banner-title {
   font-size: 3rem;
   font-weight: 400;
   margin: 0;
+  max-width: 700px;
 }
 
-.hero-banner-title>span {
+.hero-banner-title > span {
   font-weight: 700;
   color: cornflowerblue;
 }

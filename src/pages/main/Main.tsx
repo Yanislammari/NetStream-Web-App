@@ -6,14 +6,21 @@ const Main: React.FC = () => {
   return (
     <div className="App">
       <div className="hero-banner">
+        <div className="hero-banner-top">
+          <img src="./assets/netstream-logo.png" width="175px"></img>
+          <div className="hero-banner-buttons">
+            <Button text="Sign In" color="cornflowerblue" />
+            <Button text="Sign Up" color="cornflowerblue" />
+          </div>
+        </div>
         <div className="hero-banner-content">
           <h1 className="hero-banner-title">Movies, TV Shows, Series... Welcome to <span>NetStream</span> !</h1>
           <p className="hero-banner-subtitle">Ready to watch ? Click here to create or restart your membership.</p>
-          <Button text={"Click here !"} color="cornflowerblue"/>
+          <Button text="Click here !" color="cornflowerblue" />
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Main;
