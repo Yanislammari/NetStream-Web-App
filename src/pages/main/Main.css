@@ -1,0 +1,28 @@
+.hero-banner {
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.65),
+    rgba(0, 0, 0, 0.65)),
+    url("./../../../public/assets/movies-background.jpg") center center / cover no-repeat;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+
+.hero-banner-title {
+  font-size: 3rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+.hero-banner-title>span {
+  font-weight: 700;
+  color: cornflowerblue;
+}
+
+.hero-banner-subtitle {
+  font-size: 1.5rem;
+  margin: 10px 0;
+}
