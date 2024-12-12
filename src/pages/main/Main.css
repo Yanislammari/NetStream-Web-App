@@ -19,6 +19,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 20px 20px;
 }
 
@@ -41,4 +42,11 @@
 .hero-banner-subtitle {
   font-size: 1.5rem;
   margin: 10px 0;
+}
+
+@media (max-width: 768px) {
+  .hero-banner-buttons {
+    display: flex;
+    flex-direction: column;
+  }
 }

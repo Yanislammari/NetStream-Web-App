@@ -4,11 +4,12 @@ import "./Button.css"
 interface ButtonProps {
   text: string;
   color: string;
+  onClick: () => void;
 }
 
-const Button: React.FC<ButtonProps> = ({text, color}) => {
+const Button: React.FC<ButtonProps> = ({ text, color, onClick }) => {
   return (
-    <button style={{ backgroundColor: color }}>{text}</button>
+    <button onClick={onClick} style={{ backgroundColor: color }}>{text}</button>
   );
 };
 
