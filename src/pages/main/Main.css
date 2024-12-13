@@ -23,6 +23,11 @@
   padding: 20px 20px;
 }
 
+.hero-banner-top > img {
+  cursor: pointer;
+  width: 175px;
+}
+
 .hero-banner-buttons {
   padding-right: 30px;
 }
@@ -44,7 +49,7 @@
   margin: 10px 0;
 }
 
-@media (max-width: 768px) {
+@media(max-width: 768px) {
   .hero-banner-buttons {
     display: flex;
     flex-direction: column;

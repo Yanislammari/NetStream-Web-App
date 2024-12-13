@@ -10,7 +10,7 @@ const Main: React.FC = () => {
     <div className="Main">
       <div className="hero-banner">
         <div className="hero-banner-top">
-          <img src="./assets/netstream-logo.png" width="175px"></img>
+          <img src="./assets/netstream-logo.png" onClick={() => navigate("/")}></img>
           <div className="hero-banner-buttons">
             <Button text="Sign In" color="cornflowerblue" onClick={() => navigate("/login")} />
             <Button text="Sign Up" color="cornflowerblue" onClick={() => navigate("/register")} />
