@@ -1,9 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { register } from "../../services/AuthService";
+import { BASE_URL } from "../../config/API";
 import "./Register.css";
 
 const Register: React.FC = () => {
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if(password !== confirmPassword) {
+      console.log("Passwords dont matches");
+      return;
+    }
+
+    const token = await register(email, password);
+    if(token) {
+      console.log("Registration successful, token:", token);
+    }
+    else {
+      console.log("Error");
+    }
+  };
 
   return (
     <div className="Register">
@@ -13,11 +35,11 @@ const Register: React.FC = () => {
         </div>
         <div className="form-container">
           <h2>Sign Up</h2>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="form-group">
-              <input type="email" id="email" placeholder="Email address" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Please enter a valid email address !" required />
-              <input type="password" id="password" placeholder="Password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" title="Password must contain at least 8 characters, including an uppercase letter, a lowercase letter, a number, and a special character !" required />
-              <input type="password" id="confirm-password" placeholder="Confirm password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" title="Password must contain at least 8 characters, including an uppercase letter, a lowercase letter, a number, and a special character !" required />
+              <input type="email" id="email" placeholder="Email address" value={email} onChange={(e) => setEmail(e.target.value)} pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Please enter a valid email address !" required />
+              <input type="password" id="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" title="Password must contain at least 8 characters, including an uppercase letter, a lowercase letter, a number, and a special character !" required />
+              <input type="password" id="confirm-password" placeholder="Confirm password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" title="Password must contain at least 8 characters, including an uppercase letter, a lowercase letter, a number, and a special character !" required />
             </div>
             <p className="terms">You agree to our <span>Terms of Service</span> and <span>Privacy Policy</span>.</p>
             <button type="submit" className="submit-btn">Sign Up</button>
