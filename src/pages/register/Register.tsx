@@ -13,16 +13,16 @@ const Register: React.FC = () => {
         </div>
         <div className="form-container">
           <h2>Sign Up</h2>
-            <form>
-              <div className="form-group">
-                <input type="email" id="email" placeholder="Email address" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Please enter a valid email address !" required />
-                <input type="password" id="password" placeholder="Password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" title="Password must contain at least 8 characters, including an uppercase letter, a lowercase letter, a number, and a special character !" required />
-                <input type="password" id="confirm-password" placeholder="Confirm password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" title="Password must contain at least 8 characters, including an uppercase letter, a lowercase letter, a number, and a special character !" required />
-              </div>
-              <p className="forgot-password">Forgot your password ?</p>
-              <button type="submit" className="submit-btn">Sign Up</button>
-            </form>
-            <p className="redirect-text">Already have an account ? <span onClick={() => navigate("/login")} className="redirect-link">Log in here !</span></p>
+          <form>
+            <div className="form-group">
+              <input type="email" id="email" placeholder="Email address" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Please enter a valid email address !" required />
+              <input type="password" id="password" placeholder="Password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" title="Password must contain at least 8 characters, including an uppercase letter, a lowercase letter, a number, and a special character !" required />
+              <input type="password" id="confirm-password" placeholder="Confirm password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" title="Password must contain at least 8 characters, including an uppercase letter, a lowercase letter, a number, and a special character !" required />
+            </div>
+            <p className="terms">You agree to our <span>Terms of Service</span> and <span>Privacy Policy</span>.</p>
+            <button type="submit" className="submit-btn">Sign Up</button>
+          </form>
+          <p className="redirect-text">Already have an account ? <span onClick={() => navigate("/login")} className="redirect-link">Log in here !</span></p>
         </div>
       </div>
     </div>

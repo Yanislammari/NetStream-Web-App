@@ -52,14 +52,14 @@
   background-color: #222;
 }
 
-.forgot-password {
+.terms {
   color: cornflowerblue;
   font-size: 12px;
-  cursor: pointer;
 }
 
-.forgot-password:hover {
+.terms > span:hover {
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .submit-btn {
