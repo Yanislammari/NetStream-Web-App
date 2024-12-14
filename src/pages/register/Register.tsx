@@ -37,7 +37,6 @@ const Register: React.FC = () => {
 
   return (
     <div className="Register">
-      <Toaster position="bottom-left" richColors theme="dark" />
       <div className="hero-banner-register">
         <div className="hero-banner-top-register">
           <img src="./assets/netstream-logo.png" alt="Logo" onClick={() => navigate("/")} />

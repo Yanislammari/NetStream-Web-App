@@ -1,0 +1,29 @@
+.AccountProfile {
+  display: inline-block;
+  padding: 10px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.profile-picture {
+  width: 175px;
+  height: 175px;
+  border: 0.1em solid transparent;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.AccountProfile:hover .profile-picture {
+  border-color: white;
+}
+
+.AccountProfile:hover h1 {
+  color: white;
+}
+
+h1 {
+  font-size: 1.3em;
+  font-weight: 500;
+  color: gray;
+  margin-top: 10px;
+}
