@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "./../../components/button/Button";
+import { Toaster, toast } from "sonner";
 import "./Main.css";
 
 const Main: React.FC = () => {

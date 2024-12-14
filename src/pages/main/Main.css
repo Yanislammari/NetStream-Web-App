@@ -21,6 +21,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px 20px;
+  overflow: hidden;
 }
 
 .hero-banner-top > img {
@@ -30,6 +31,7 @@
 
 .hero-banner-buttons {
   padding-right: 30px;
+  overflow: hidden;
 }
 
 .hero-banner-title {

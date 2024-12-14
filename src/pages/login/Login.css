@@ -88,7 +88,7 @@
 }
 
 @media(max-width: 768px) {
-  .hero-banner-top-register > img {
+  .hero-banner-top-login > img {
     cursor: pointer;
     width: 175px;
     position: absolute;

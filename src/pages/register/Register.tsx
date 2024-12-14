@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { register } from "../../services/AuthService";
-import { BASE_URL } from "../../config/API";
+import { toast, Toaster } from "sonner";
 import "./Register.css";
 
 const Register: React.FC = () => {
@@ -14,7 +14,7 @@ const Register: React.FC = () => {
     e.preventDefault();
 
     if(password !== confirmPassword) {
-      console.log("Passwords dont matches");
+      toast.error("Password dosent matches !");
       return;
     }
 
@@ -29,6 +29,7 @@ const Register: React.FC = () => {
 
   return (
     <div className="Register">
+      <Toaster position="bottom-left" richColors theme="dark" />
       <div className="hero-banner-register">
         <div className="hero-banner-top-register">
           <img src="./assets/netstream-logo.png" alt="Logo" onClick={() => navigate("/")} />
