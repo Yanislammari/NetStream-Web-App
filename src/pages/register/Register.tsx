@@ -19,11 +19,19 @@ const Register: React.FC = () => {
     }
 
     const token = await register(email, password);
-    if(token) {
-      console.log("Registration successful, token:", token);
-    }
-    else {
-      console.log("Error");
+    switch(token) {
+      case "Email already exist !": {
+        toast.error("Email already exist !");
+        break;
+      }
+      case "Internal servor error !": {
+        toast.error("Sorry, internal server error !");
+        break;
+      }
+      default: {
+        toast.success("Registered successfully !");
+        break;
+      }
     }
   };
 
