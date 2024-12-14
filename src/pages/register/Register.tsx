@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { register } from "../../services/AuthService";
-import { toast, Toaster } from "sonner";
+import { toast } from "sonner";
 import "./Register.css";
 
 const Register: React.FC = () => {

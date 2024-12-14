@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../services/AuthService";
-import { Toaster, toast } from "sonner";
+import { toast } from "sonner";
 import "./Login.css";
 
 const Login: React.FC = () => {
@@ -35,7 +35,6 @@ const Login: React.FC = () => {
 
   return (
     <div className="Login">
-      <Toaster position="bottom-left" richColors theme="dark" />
       <div className="hero-banner-login">
         <div className="hero-banner-top-login">
           <img src="./assets/netstream-logo.png" alt="Logo" onClick={() => navigate("/")} />
