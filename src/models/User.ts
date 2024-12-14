@@ -6,7 +6,7 @@ interface User {
   email: string;
   password: string;
   role: Role;
-  Accounts: Account[];
+  accounts: Account[];
 }
 
 export default User;

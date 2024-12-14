@@ -30,6 +30,7 @@ const Register: React.FC = () => {
       }
       default: {
         toast.success("Registered successfully !");
+        navigate("/accounts");
         break;
       }
     }

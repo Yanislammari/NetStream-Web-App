@@ -27,7 +27,9 @@ const Login: React.FC = () => {
         break;
       }
       default: {
+        localStorage.setItem("token", token);
         toast.success("Logged in successfully !");
+        navigate("/accounts");
         break;
       }
     }
