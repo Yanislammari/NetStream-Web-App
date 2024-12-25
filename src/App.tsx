@@ -4,6 +4,7 @@ import Main from "./pages/Main/Main";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Accounts from "./pages/Accounts/Accounts";
+import Home from "./pages/Home/Home";
 import "./App.css";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/accounts" element={<Accounts />} />
+        <Route path="/home/:accountId" element={<Home />} />
       </Routes>
     </BrowserRouter>
   );

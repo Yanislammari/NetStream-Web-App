@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import User from "../../models/User";
 import { getUserByToken } from "../../services/UserService";
 import AccountProfile from "../../components/AccountProfile/AccountProfile";
@@ -53,10 +53,10 @@ const Accounts: React.FC = () => {
       <h1 className="title">Who's watching ?</h1>
       <div className="AccountsContainer">
         {user?.accounts.map((account) => (
-          <AccountProfile key={account.id} name={account.username} profilePicture={account.profilePicture ? account.profilePicture : "./assets/placeholder.png"} />
+          <Link to={`/home/${account.id}`}>
+            <AccountProfile key={account.id} name={account.username} profilePicture={account.profilePicture ? account.profilePicture : "./assets/placeholder.png"} />
+          </Link>
         ))}
-
-        
         <AccountProfile name="Create an account" profilePicture="./assets/icon-plus.png" />
       </div>
       <Button text="Manage profiles" color="gray" onClick={() => console.log(user)} />
