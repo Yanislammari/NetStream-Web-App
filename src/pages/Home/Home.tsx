@@ -1,12 +1,11 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import Navbar from "../../components/Navbar/Navbar";
+import "./Home.css";
 
 const Home: React.FC = () => {
-  const { accountId } = useParams();
-
   return (
     <div className="Home">
-      <h1>Home {accountId}</h1>
+      <Navbar />
     </div>
   );
 };
