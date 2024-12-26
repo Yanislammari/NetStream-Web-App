@@ -5,11 +5,12 @@ interface ButtonProps {
   text: string;
   color: string;
   onClick: () => void;
+  isContainsMargin?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({ text, color, onClick }) => {
+const Button: React.FC<ButtonProps> = ({ text, color, isContainsMargin = true, onClick }) => {
   return (
-    <button onClick={onClick} style={{ backgroundColor: color }}>{text}</button>
+    <button onClick={onClick} style={{ backgroundColor: color, margin: isContainsMargin ? "10px" : "0" }}>{text}</button>
   );
 };
 
