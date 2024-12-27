@@ -1,0 +1,18 @@
+.MediaCard {
+  width: 150px;
+  height: 225px;
+  overflow: hidden;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.MediaCard:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.media-picture {
+  width: 100%;
+  transition: opacity 0.3s ease;
+}
