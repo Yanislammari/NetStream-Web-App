@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaSearch, FaBell, FaBars } from "react-icons/fa";
 import "./Navbar.css";
 
 const Navbar: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -14,9 +15,26 @@ const Navbar: React.FC = () => {
     setSearchOpen(!searchOpen);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if(window.scrollY > 0) {
+        setScrolled(true);
+      }
+      else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <div className="Navbar">
-      <nav className="navbar">
+      <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
         <div className={`navbar-left ${searchOpen ? "hide" : ""}`}>
           <img className="navbar-logo" src="./../assets/netstream-logo.png" alt="Logo" />
           <ul className={`navbar-links ${menuOpen ? "open" : ""}`}>
