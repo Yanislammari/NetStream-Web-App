@@ -5,6 +5,8 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Accounts from "./pages/Accounts/Accounts";
 import Home from "./pages/Home/Home";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import "./App.css";
 
 function App() {
