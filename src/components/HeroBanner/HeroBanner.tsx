@@ -18,7 +18,7 @@ const HeroBanner: React.FC<HeroBannerProps> = ({ backgroundImage, title, subtitl
             <p>{subtitle}</p>
             <div className="btn">
               <Button text="Show More" color="cornflowerblue" isContainsMargin={false} onClick={() => console.log("")} />
-              <Button text="Play an excerpt"  color="cornflowerblue" onClick={() => console.log("")} />
+              <Button text="Play an excerpt" color="cornflowerblue" onClick={() => console.log("")} />
             </div>
           </div>
         </div>
