@@ -45,7 +45,7 @@ export async function getAllMediasByMediaType(mediaType: MediaType): Promise<Med
       }
     }
 
-    const response = await fetch(`${BASE_URL}/medias/${mediaTypeParams}`, {
+    const response = await fetch(`${BASE_URL}/medias/type/${mediaTypeParams}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

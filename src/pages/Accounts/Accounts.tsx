@@ -26,12 +26,12 @@ const Accounts: React.FC = () => {
           case "No Token provided !": {
             toast.error("You must be authentificated !");
             navigate("/login");
-            break;
+            return;
           }
           case "Token not available !": {
             toast.error("Session expired, please sign in !");
             navigate("/login");
-            break;
+            return;
           }
           default: {
             setUser(fetchedUser as User);
@@ -43,8 +43,8 @@ const Accounts: React.FC = () => {
         navigate("/login");
         return;
       }
-    }
-
+    };
+    
     fetchUser();
   }, []);
 
