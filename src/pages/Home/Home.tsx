@@ -59,7 +59,7 @@ const Home: React.FC = () => {
         const fetchedSeries = await getAllMediasByMediaType(MediaType.Series);
         switch(fetchedSeries) {
           case "Invalid MediaType !": {
-            toast.error("Error during fetching movies !");
+            toast.error("Error during fetching series !");
             return;
           }
           case "Internal servor error !": {
