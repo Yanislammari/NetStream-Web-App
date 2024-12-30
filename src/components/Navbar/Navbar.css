@@ -64,6 +64,11 @@
   font-size: 1.5rem;
   color: #e5e5e5;
   cursor: pointer;
+  transition: color 0.3s;
+}
+
+.icon-search:hover, .icon-bell:hover {
+  color: cornflowerblue;
 }
 
 .icon-menu {
