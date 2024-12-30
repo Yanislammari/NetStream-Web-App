@@ -1,6 +1,7 @@
 import { BASE_URL } from "../config/API";
 import Media from "../models/Media";
 import MediaType from "../models/MediaType";
+import Category from "../models/Category";
 
 export async function getAllMedias(): Promise<Media[] | string> {
   try {
@@ -57,6 +58,30 @@ export async function getAllMediasByMediaType(mediaType: MediaType): Promise<Med
     }
     else if(response.status === 500) {
       return "Internal servor error !";
+    }
+
+    const medias: Media[] = await response.json();
+    return medias;
+  }
+  catch(err) {
+    return "Internal servor error !";
+  }
+}
+
+export async function getAllMediaByCategory(category: Category): Promise<Media[] | string> {
+  try {
+    const response = await fetch(`${BASE_URL}/medias/category/by`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        category: category
+      })
+    });
+
+    if(response.status === 400) {
+      return "Error in category request";
     }
 
     const medias: Media[] = await response.json();
