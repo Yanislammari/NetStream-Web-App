@@ -11,6 +11,7 @@ import "./Home.css";
 const Home: React.FC = () => {
   const [medias, setMedias] = useState<Media[]>([]);
   const [movies, setMovies] = useState<Media[]>([]);
+  const [series, setSeries] = useState<Media[]>([]);
 
   useEffect(() => {
     const fetchMedias = async () => {
@@ -52,9 +53,33 @@ const Home: React.FC = () => {
         return;
       }
     };
+
+    const fetchMediasSeries = async () => {
+      try {
+        const fetchedSeries = await getAllMediasByMediaType(MediaType.Series);
+        switch(fetchedSeries) {
+          case "Invalid MediaType !": {
+            toast.error("Error during fetching movies !");
+            return;
+          }
+          case "Internal servor error !": {
+            toast.error("Internal servor error !");
+            return;
+          }
+          default: {
+            setSeries(fetchedSeries as Media[]);
+          }
+        }
+      }
+      catch(err) {
+        toast.error("Internal servor error !");
+        return;
+      }
+    };
     
     fetchMedias();
     fetchMediasMovies();
+    fetchMediasSeries();
   }, []);
 
   return (
@@ -63,6 +88,7 @@ const Home: React.FC = () => {
       <HeroBanner backgroundImage={medias[2]?.largePicture ?? ""} title={medias[0]?.name} subtitle={medias[0]?.synopsis} />
       <MediaSlideshow title="Latest Releases" medias={medias} />
       <MediaSlideshow title="Latest Movies" medias={movies} />
+      <MediaSlideshow title="Latest Series" medias={series} />
     </div>
   );
 };
