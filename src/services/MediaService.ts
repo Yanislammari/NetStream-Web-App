@@ -91,3 +91,30 @@ export async function getAllMediaByCategory(category: Category): Promise<Media[]
     return "Internal servor error !";
   }
 }
+
+export async function getMediaById(id: string): Promise<Media | string> {
+  try {
+    const response = await fetch(`${BASE_URL}/medias/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if(response.status === 404) {
+      return "Media not found !";
+    }
+    else if(response.status === 400) {
+      return "Invalid Media ID !";
+    }
+    else if(response.status === 500) {
+      return "Internal servor error !";
+    }
+
+    const media: Media = await response.json();
+    return media;
+  }
+  catch(err) {
+    return "Internal servor error !";
+  }
+}

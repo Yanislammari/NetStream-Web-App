@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { Link } from "react-router-dom";
 import Media from "../../models/Media";
 import MediaCard from "../MediaCard/MediaCard";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
@@ -34,7 +35,9 @@ const MediaSlideshow: React.FC<MediaSlideshowProps> = ({ title, medias }) => {
           </button>
           <div className="medias carousel" ref={sliderRef}>
             {medias.map((media) => (
-              <MediaCard key={media.id} media={media} />
+              <Link to={`/media/${media.id}`}>
+                <MediaCard key={media.id} media={media} />
+              </Link>
             ))}
           </div>
           <button className="carousel-btn right" onClick={scrollRight}>

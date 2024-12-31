@@ -6,6 +6,7 @@ import Register from "./pages/Register/Register";
 import Accounts from "./pages/Accounts/Accounts";
 import Home from "./pages/Home/Home";
 import Series from "./pages/Series/Series";
+import MediaDetails from "./pages/MediaDetails/MediaDetails";
 import "./App.css";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path="/accounts" element={<Accounts />} />
         <Route path="/home" element={<Home />} />
         <Route path="/series" element={<Series />} />
+        <Route path="/media/:mediaId" element={<MediaDetails />} />
       </Routes>
     </BrowserRouter>
   );
