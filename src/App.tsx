@@ -5,6 +5,7 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Accounts from "./pages/Accounts/Accounts";
 import Home from "./pages/Home/Home";
+import Series from "./pages/Series/Series";
 import "./App.css";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/accounts" element={<Accounts />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/series" element={<Series />} />
       </Routes>
     </BrowserRouter>
   );

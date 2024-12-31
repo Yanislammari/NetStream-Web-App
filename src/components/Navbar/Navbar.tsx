@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { FaSearch, FaBell, FaBars } from "react-icons/fa";
 import "./Navbar.css";
 
@@ -6,6 +7,7 @@ const Navbar: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -36,15 +38,15 @@ const Navbar: React.FC = () => {
     <div className="Navbar">
       <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
         <div className={`navbar-left ${searchOpen ? "hide" : ""}`}>
-          <img className="navbar-logo" src="./../assets/netstream-logo.png" alt="Logo" />
+          <img className="navbar-logo" src="./../assets/netstream-logo.png" alt="Logo" onClick={() => navigate("/home")} />
           <ul className={`navbar-links ${menuOpen ? "open" : ""}`}>
-            <li>Home</li>
-            <li>Series</li>
-            <li>Movies</li>
-            <li>News</li>
-            <li>Most Viewed</li>
-            <li>Favorites</li>
-            <li>My History</li>
+            <li onClick={() => navigate("/home")}><p>Home</p></li>
+            <li onClick={() => navigate("/series")}><p>Series</p></li>
+            <li><p>Movies</p></li>
+            <li><p>News</p></li>
+            <li><p>Most Viewed</p></li>
+            <li><p>Favorites</p></li>
+            <li><p>My History</p></li>
           </ul>
         </div>
         <div className="navbar-icons">
