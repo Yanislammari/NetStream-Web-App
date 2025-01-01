@@ -1,0 +1,9 @@
+.category-choice {
+  padding-top: 75px;
+  margin-left: 35px;
+  margin-bottom: 50px;
+}
+
+.category-choice > h1 {
+  color: white;
+}

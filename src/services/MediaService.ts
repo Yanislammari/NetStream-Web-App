@@ -53,7 +53,7 @@ export async function getAllMediasByMediaType(mediaType: MediaType): Promise<Med
       }, 
     });
 
-    if(response.status === 404) {
+    if(response.status === 400) {
       return "Invalid MediaType !";
     }
     else if(response.status === 500) {
@@ -71,7 +71,7 @@ export async function getAllMediasByMediaType(mediaType: MediaType): Promise<Med
 export async function getAllMediaByCategory(category: Category): Promise<Media[] | string> {
   try {
     const response = await fetch(`${BASE_URL}/medias/category/by`, {
-      method: "GET",
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
@@ -81,7 +81,10 @@ export async function getAllMediaByCategory(category: Category): Promise<Media[]
     });
 
     if(response.status === 400) {
-      return "Error in category request";
+      return "Error in category request !";
+    }
+    else if(response.status === 500) {
+      return "Internal servor error !";
     }
 
     const medias: Media[] = await response.json();
