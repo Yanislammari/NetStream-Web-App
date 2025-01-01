@@ -38,13 +38,20 @@ const Series: React.FC = () => {
     Object.values(Category).map((category) => {
       fetchMediaByCategory(category);
     });
-
-    console.log(allMediasByCategory);
   }, []);
 
   return (
     <div className="Series">
       <Navbar />
+      <div className="category-choice">
+        <h1>Series</h1>
+        <select>
+          <option>Category</option>
+          {Object.values(Category).map((category) => (
+            <option key={category}>{category}</option>
+          ))}
+        </select>
+      </div>
       {allMediasByCategory.map(({ category, medias }) => (
         medias.length > 0 && (
           <MediaSlideshow key={category} title={`Category: ${category}`} medias={medias} />

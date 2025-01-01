@@ -1,4 +1,6 @@
 .category-choice {
+  display: flex;
+  align-items: center;
   padding-top: 75px;
   margin-left: 35px;
   margin-bottom: 50px;
@@ -6,4 +8,25 @@
 
 .category-choice > h1 {
   color: white;
+  margin-right: 30px;
+}
+
+.category-choice > select {
+  background-color: black;
+  border: 2px solid cornflowerblue;
+  color: white;
+  font-size: 18px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.category-choice > select:hover {
+  background-color: #333;
+}
+
+.category-choice > select:focus {
+  outline: none;
+  border-color: #5e81e0;
 }
