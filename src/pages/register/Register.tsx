@@ -51,9 +51,9 @@ const Register: React.FC = () => {
               <input type="password" id="confirm-password" placeholder="Confirm password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" title="Password must contain at least 8 characters, including an uppercase letter, a lowercase letter, a number, and a special character !" required />
             </div>
             <p className="terms">You agree to our <span>Terms of Service</span> and <span>Privacy Policy</span>.</p>
-            <button type="submit" className="submit-btn">Sign Up</button>
+            <button className="submit-btn" type="submit">Sign Up</button>
           </form>
-          <p className="redirect-text">Already have an account ? <span onClick={() => navigate("/login")} className="redirect-link">Log in here !</span></p>
+          <p className="redirect-text">Already have an account ? <span className="redirect-link" onClick={() => navigate("/login")}>Log in here !</span></p>
         </div>
       </div>
     </div>

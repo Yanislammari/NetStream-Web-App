@@ -51,11 +51,11 @@ const Navbar: React.FC = () => {
         </div>
         <div className="navbar-icons">
           <div className="search-container">
-            <input type="text" className={`search-input ${searchOpen ? "show" : ""}`} placeholder="Search..." />
+            <input className={`search-input ${searchOpen ? "show" : ""}`} type="text" placeholder="Search..." />
             <FaSearch className="icon-search" onClick={toggleSearch} />
           </div>
           <FaBell className="icon-bell" />
-          <img src="./../assets/placeholder.png" alt="Profile" className="profile-pic" />
+          <img className="profile-pic" src="./../assets/placeholder.png" alt="Profile" />
           <FaBars className="icon-menu" onClick={toggleMenu} />
         </div>
       </nav>

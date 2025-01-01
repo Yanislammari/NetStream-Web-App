@@ -49,9 +49,9 @@ const Login: React.FC = () => {
               <input type="password" id="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" title="Password must contain at least 8 characters, including an uppercase letter, a lowercase letter, a number, and a special character !" required />
             </div>
             <p className="forgot-password">Forgot your password ?</p>
-            <button type="submit" className="submit-btn">Sign In</button>
+            <button className="submit-btn" type="submit">Sign In</button>
           </form>
-          <p className="redirect-text">Don't have an account ? <span onClick={() => navigate("/register")} className="redirect-link">Sign up here !</span></p>
+          <p className="redirect-text">Don't have an account ? <span className="redirect-link" onClick={() => navigate("/register")}>Sign up here !</span></p>
         </div>
       </div>
     </div>

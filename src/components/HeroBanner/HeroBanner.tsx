@@ -61,8 +61,7 @@ const HeroBanner: React.FC<HeroBannerProps> = ({ backgroundImage, title, subtitl
 
   return (
     <div className="HeroBanner" ref={heroRef}>
-      <div
-        className="hb" style={{ backgroundImage: playVideo ? "none" : `url(${backgroundImage})` }} >
+      <div className="hb" style={{ backgroundImage: playVideo ? "none" : `url(${backgroundImage})` }} >
         {playVideo && (
           <video className="video-background" ref={videoRef} src={backgroundVideo} autoPlay muted={isMuted} loop />
         )}
