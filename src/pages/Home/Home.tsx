@@ -12,6 +12,7 @@ const Home: React.FC = () => {
   const [medias, setMedias] = useState<Media[]>([]);
   const [movies, setMovies] = useState<Media[]>([]);
   const [series, setSeries] = useState<Media[]>([]);
+  const [randomIndex, setRandomIndex] = useState(0);
 
   useEffect(() => {
     const fetchMedias = async () => {
@@ -31,12 +32,12 @@ const Home: React.FC = () => {
       }
     };
 
-    const fetchMediasMovies = async () => {
+    const fetchMediasByMediaType = async (mediaType: MediaType) => {
       try {
-        const fetchedMovies = await getAllMediasByMediaType(MediaType.Movie);
-        switch(fetchedMovies) {
+        const fetchedMediasByMediaType = await getAllMediasByMediaType(mediaType);
+        switch(fetchedMediasByMediaType) {
           case "Invalid MediaType !": {
-            toast.error("Error during fetching movies !");
+            toast.error(`Error during fetching ${mediaType} !`);
             return;
           }
           case "Internal servor error !": {
@@ -44,30 +45,13 @@ const Home: React.FC = () => {
             return;
           }
           default: {
-            setMovies(fetchedMovies as Media[]);
-          }
-        }
-      }
-      catch(err) {
-        toast.error("Internal servor error !");
-        return;
-      }
-    };
-
-    const fetchMediasSeries = async () => {
-      try {
-        const fetchedSeries = await getAllMediasByMediaType(MediaType.Series);
-        switch(fetchedSeries) {
-          case "Invalid MediaType !": {
-            toast.error("Error during fetching series !");
+            if(mediaType === MediaType.Movie) {
+              setMovies(fetchedMediasByMediaType as Media[]);
+            }
+            else if(mediaType === MediaType.Series) {
+              setSeries(fetchedMediasByMediaType as Media[]);
+            }
             return;
-          }
-          case "Internal servor error !": {
-            toast.error("Internal servor error !");
-            return;
-          }
-          default: {
-            setSeries(fetchedSeries as Media[]);
           }
         }
       }
@@ -78,14 +62,19 @@ const Home: React.FC = () => {
     };
     
     fetchMedias();
-    fetchMediasMovies();
-    fetchMediasSeries();
+    fetchMediasByMediaType(MediaType.Movie);
+    fetchMediasByMediaType(MediaType.Series);
   }, []);
+
+  useEffect(() => {
+    const randomIndexMedia = Math.floor(Math.random() * medias.length);
+    setRandomIndex(randomIndexMedia);
+  }, [medias]);
 
   return (
     <div className="Home">
       <Navbar />
-      <HeroBanner backgroundImage={medias[2]?.largePicture ?? ""} title={medias[0]?.name} subtitle={medias[0]?.synopsis} />
+      <HeroBanner backgroundImage={medias[randomIndex]?.largePicture ?? ""} backgroundVideo={medias[randomIndex]?.video ?? ""} title={medias[randomIndex]?.name} subtitle={medias[randomIndex]?.synopsis} />
       <MediaSlideshow title="Latest Releases" medias={medias} />
       <MediaSlideshow title="Latest Movies" medias={movies} />
       <MediaSlideshow title="Latest Series" medias={series} />

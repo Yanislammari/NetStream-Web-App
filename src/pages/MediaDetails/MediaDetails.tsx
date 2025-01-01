@@ -44,7 +44,7 @@ const MediaDetails: React.FC = () => {
   return (
     <div className="MediaDetails">
       <Navbar />
-      <HeroBanner backgroundImage={media?.largePicture ?? ""} title={media?.name ?? ""} subtitle={media?.synopsis ?? ""} />
+      <HeroBanner backgroundImage={media?.largePicture ?? ""} backgroundVideo={media?.video ?? ""} title={media?.name ?? ""} subtitle={media?.synopsis ?? ""} />
     </div>
   );
 };
