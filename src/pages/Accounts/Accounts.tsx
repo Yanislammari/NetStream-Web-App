@@ -53,7 +53,7 @@ const Accounts: React.FC = () => {
       <h1 className="title">Who's watching ?</h1>
       <div className="AccountsContainer">
         {user?.accounts.map((account) => (
-          <Link to={`/home/${account.id}`}>
+          <Link to={"/home"}>
             <AccountProfile key={account.id} name={account.username} profilePicture={account.profilePicture ? account.profilePicture : "./assets/placeholder.png"} />
           </Link>
         ))}
