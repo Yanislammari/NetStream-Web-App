@@ -5,7 +5,7 @@ import CategoryChoice from "../../components/CategoryChoice/CategoryChoice";
 import MediaSlideshow from "../../components/MediaSlideshow/MediaSlideshow";
 import Media from "../../models/Media";
 import Category from "../../models/Category";
-import { getAllMediaByCategory } from "../../services/MediaService";
+import { getAllMediasByCategory } from "../../services/MediaService";
 import { toast } from "sonner";
 import "./Series.css";
 
@@ -23,7 +23,7 @@ const Series: React.FC = () => {
   useEffect(() => {
     const fetchMediaByCategory = async (category: Category) => {
       try {
-        const fetchedMediasByCategroy = await getAllMediaByCategory(category);
+        const fetchedMediasByCategroy = await getAllMediasByCategory(category);
         switch(fetchedMediasByCategroy) {
           case "Error in category request !": {
             toast.error("Error in category request !");
