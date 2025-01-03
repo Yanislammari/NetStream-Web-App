@@ -12,6 +12,10 @@ const MediaDetails: React.FC = () => {
   const { mediaId } = useParams();
   const navigate = useNavigate();
 
+  const HeroBannerShowMoreAction = (mediaId: string) => {
+    navigate(`/media/${mediaId}`);
+  };
+
   useEffect(() => {
     const fetchMedia = async () => {
       const fetchedMedia = await getMediaById(mediaId as string);
@@ -44,7 +48,7 @@ const MediaDetails: React.FC = () => {
   return (
     <div className="MediaDetails">
       <Navbar />
-      <HeroBanner backgroundImage={media?.largePicture ?? ""} backgroundVideo={media?.video ?? ""} title={media?.name ?? ""} subtitle={media?.synopsis ?? ""} />
+      <HeroBanner backgroundImage={media?.largePicture ?? ""} backgroundVideo={media?.video ?? ""} title={media?.name ?? ""} subtitle={media?.synopsis ?? ""} showMoreAction={() => HeroBannerShowMoreAction(media?.id ?? "")} />
     </div>
   );
 };

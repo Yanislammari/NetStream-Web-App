@@ -35,7 +35,7 @@ const Series: React.FC = () => {
       }
     };
 
-    Object.values(Category).map((category) => {
+    Object.values(Category).forEach((category) => {
       fetchMediaByCategory(category);
     });
   }, []);
@@ -54,7 +54,7 @@ const Series: React.FC = () => {
       </div>
       {allMediasByCategory.map(({ category, medias }) => (
         medias.length > 0 && (
-          <MediaSlideshow key={category} title={`Category: ${category}`} medias={medias} />
+          <MediaSlideshow key={category} title={category} medias={medias} />
         )
       ))}
     </div>

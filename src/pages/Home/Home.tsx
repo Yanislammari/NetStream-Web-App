@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import HeroBanner from "../../components/HeroBanner/HeroBanner";
 import MediaSlideshow from "../../components/MediaSlideshow/MediaSlideshow";
@@ -13,6 +14,11 @@ const Home: React.FC = () => {
   const [movies, setMovies] = useState<Media[]>([]);
   const [series, setSeries] = useState<Media[]>([]);
   const [randomIndex, setRandomIndex] = useState(0);
+  const navigate = useNavigate();
+
+  const HeroBannerShowMoreAction = (mediaId: string) => {
+    navigate(`/media/${mediaId}`);
+  };
 
   useEffect(() => {
     const fetchMedias = async () => {
@@ -74,7 +80,7 @@ const Home: React.FC = () => {
   return (
     <div className="Home">
       <Navbar />
-      <HeroBanner backgroundImage={medias[randomIndex]?.largePicture ?? ""} backgroundVideo={medias[randomIndex]?.video ?? ""} title={medias[randomIndex]?.name} subtitle={medias[randomIndex]?.synopsis} />
+      <HeroBanner backgroundImage={medias[randomIndex]?.largePicture ?? ""} backgroundVideo={medias[randomIndex]?.video ?? ""} title={medias[randomIndex]?.name} subtitle={medias[randomIndex]?.synopsis} showMoreAction={() => HeroBannerShowMoreAction(medias[randomIndex]?.id)} />
       <MediaSlideshow title="Latest Releases" medias={medias} />
       <MediaSlideshow title="Latest Movies" medias={movies} />
       <MediaSlideshow title="Latest Series" medias={series} />
