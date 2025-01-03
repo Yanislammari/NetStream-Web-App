@@ -8,24 +8,24 @@ import MediaType from "../../models/MediaType";
 import Category from "../../models/Category";
 import { getAllMediasByMediaTypeAndCategory } from "../../services/MediaService";
 import { toast } from "sonner";
-import "./Series.css";
+import "./Movies.css";
 
-const Series: React.FC = () => {
-  const [allSeriesByCategory, setAllSeriesByCategroy] = useState<{ category: Category, medias: Media[] }[]>([]);
+const Movies: React.FC = () => {
+  const [allMoviesByCategory, setAllMoviesByCategroy] = useState<{ category: Category, medias: Media[] }[]>([]);
   const navigate = useNavigate();
 
   const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedCategory = e.target.value;
     if(selectedCategory !== "Category") {
-      navigate(`/series/${selectedCategory}`);
+      navigate(`/movies/${selectedCategory}`);
     }
   };
 
   useEffect(() => {
-    const fetchSeriesByCategory = async (mediaType: MediaType = MediaType.Series ,category: Category) => {
+    const fetchMoviesByCategory = async (mediaType: MediaType = MediaType.Movie, category: Category) => {
       try {
-        const fetchedSeriesByCategroy = await getAllMediasByMediaTypeAndCategory(mediaType, category);
-        switch(fetchedSeriesByCategroy) {
+        const fetchedMoviesByCategroy = await getAllMediasByMediaTypeAndCategory(mediaType, category);
+        switch(fetchedMoviesByCategroy) {
           case "Invalid MediaType !": {
             toast.error("Error in media type request !");
             return;
@@ -39,7 +39,7 @@ const Series: React.FC = () => {
             return;
           }
           default: {
-            setAllSeriesByCategroy((prev) => [...prev, { category: category, medias: fetchedSeriesByCategroy as Media[] }]);     
+            setAllMoviesByCategroy((prev) => [...prev, { category: category, medias: fetchedMoviesByCategroy as Media[] }]);     
             return;     
           }
         }
@@ -51,15 +51,15 @@ const Series: React.FC = () => {
     };
 
     Object.values(Category).forEach((category) => {
-      fetchSeriesByCategory(MediaType.Series, category);
+      fetchMoviesByCategory(MediaType.Movie, category);
     });
   }, []);
 
   return (
-    <div className="Series">
+    <div className="Movies">
       <Navbar />
-      <CategoryChoice title="Series" selectAction={handleCategoryChange} defaultCategory="Category"/>
-      {allSeriesByCategory.map(({ category, medias }) => (
+      <CategoryChoice title="Movies" selectAction={handleCategoryChange} defaultCategory="Category"/>
+      {allMoviesByCategory.map(({ category, medias }) => (
         medias.length > 0 && (
           <MediaSlideshow key={category} title={category} medias={medias} />
         )
@@ -68,4 +68,4 @@ const Series: React.FC = () => {
   )
 };
 
-export default Series;
+export default Movies;

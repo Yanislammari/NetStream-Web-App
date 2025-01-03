@@ -42,7 +42,7 @@ const Navbar: React.FC = () => {
           <ul className={`navbar-links ${menuOpen ? "open" : ""}`}>
             <li onClick={() => navigate("/home")}><p>Home</p></li>
             <li onClick={() => navigate("/series")}><p>Series</p></li>
-            <li><p>Movies</p></li>
+            <li onClick={() => navigate("/movies")}><p>Movies</p></li>
             <li><p>News</p></li>
             <li><p>Most Viewed</p></li>
             <li><p>Favorites</p></li>

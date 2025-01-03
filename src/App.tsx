@@ -7,6 +7,8 @@ import Accounts from "./pages/Accounts/Accounts";
 import Home from "./pages/Home/Home";
 import Series from "./pages/Series/Series";
 import SeriesCategory from "./pages/SeriesCategory/SeriesCategory";
+import Movies from "./pages/Movies/Movies";
+import MoviesCategory from "./pages/MoviesCategory/MoviesCategory";
 import MediaDetails from "./pages/MediaDetails/MediaDetails";
 import "./App.css";
 
@@ -22,6 +24,8 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/series" element={<Series />} />
         <Route path="/series/:category" element={<SeriesCategory />} />
+        <Route path="/movies" element={<Movies />} />
+        <Route path="/movies/:category" element={<MoviesCategory />} />
         <Route path="/media/:mediaId" element={<MediaDetails />} />
       </Routes>
     </BrowserRouter>
