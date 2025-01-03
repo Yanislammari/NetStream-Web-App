@@ -4,8 +4,9 @@ import Navbar from "../../components/Navbar/Navbar";
 import CategoryChoice from "../../components/CategoryChoice/CategoryChoice";
 import MediaSlideshow from "../../components/MediaSlideshow/MediaSlideshow";
 import Media from "../../models/Media";
+import MediaType from "../../models/MediaType";
 import Category from "../../models/Category";
-import { getAllMediasByCategory } from "../../services/MediaService";
+import { getAllMediasByMediaTypeAndCategory } from "../../services/MediaService";
 import { toast } from "sonner";
 import "./Series.css";
 
@@ -21,10 +22,14 @@ const Series: React.FC = () => {
   };
 
   useEffect(() => {
-    const fetchMediaByCategory = async (category: Category) => {
+    const fetchSeriesByCategory = async (mediaType: MediaType = MediaType.Series ,category: Category) => {
       try {
-        const fetchedMediasByCategroy = await getAllMediasByCategory(category);
-        switch(fetchedMediasByCategroy) {
+        const fetchedSeriesByCategroy = await getAllMediasByMediaTypeAndCategory(mediaType, category);
+        switch(fetchedSeriesByCategroy) {
+          case "Invalid MediaType !": {
+            toast.error("Error in media type request !");
+            return;
+          }
           case "Error in category request !": {
             toast.error("Error in category request !");
             return;
@@ -34,7 +39,7 @@ const Series: React.FC = () => {
             return;
           }
           default: {
-            setAllMediasByCategroy((prev) => [...prev, { category: category, medias: fetchedMediasByCategroy as Media[] }]);     
+            setAllMediasByCategroy((prev) => [...prev, { category: category, medias: fetchedSeriesByCategroy as Media[] }]);     
             return;     
           }
         }
@@ -46,7 +51,7 @@ const Series: React.FC = () => {
     };
 
     Object.values(Category).forEach((category) => {
-      fetchMediaByCategory(category);
+      fetchSeriesByCategory(MediaType.Series, category);
     });
   }, []);
 
