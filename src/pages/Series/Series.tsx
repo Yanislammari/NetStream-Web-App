@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
+import CategoryChoice from "../../components/CategoryChoice/CategoryChoice";
 import MediaSlideshow from "../../components/MediaSlideshow/MediaSlideshow";
 import Media from "../../models/Media";
 import Category from "../../models/Category";
@@ -9,6 +11,14 @@ import "./Series.css";
 
 const Series: React.FC = () => {
   const [allMediasByCategory, setAllMediasByCategroy] = useState<{ category: Category, medias: Media[] }[]>([]);
+  const navigate = useNavigate();
+
+  const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedCategory = e.target.value;
+    if(selectedCategory !== "Category") {
+      navigate(`/series/${selectedCategory}`);
+    }
+  };
 
   useEffect(() => {
     const fetchMediaByCategory = async (category: Category) => {
@@ -43,15 +53,7 @@ const Series: React.FC = () => {
   return (
     <div className="Series">
       <Navbar />
-      <div className="category-choice">
-        <h1>Series</h1>
-        <select>
-          <option>Category</option>
-          {Object.values(Category).map((category) => (
-            <option key={category}>{category}</option>
-          ))}
-        </select>
-      </div>
+      <CategoryChoice title="Series" selectAction={handleCategoryChange} defaultCategory="Category"/>
       {allMediasByCategory.map(({ category, medias }) => (
         medias.length > 0 && (
           <MediaSlideshow key={category} title={category} medias={medias} />
