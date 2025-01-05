@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import CategoryChoice from "../../components/CategoryChoice/CategoryChoice";
-import MediaCard from "../../components/MediaCard/MediaCard";
+import MediaContainer from "../../components/MediaContainer/MediaContainer";
 import Media from "../../models/Media";
 import MediaType from "../../models/MediaType";
 import Category from "../../models/Category";
@@ -56,13 +56,7 @@ const MoviesCategory: React.FC = () => {
     <div className="MoviesCategory">
       <Navbar />
       <CategoryChoice title="Movies" selectAction={handleCategoryChange} defaultCategory={category as Category} />
-      <div className="medias-container">
-        {moviesByCategory.map((movie) => (
-          <Link key={movie.id} to={`/media/${movie.id}`}>
-            <MediaCard media={movie} />
-          </Link>
-        ))}
-      </div>
+      <MediaContainer medias={moviesByCategory} />
     </div>
   );
 };
