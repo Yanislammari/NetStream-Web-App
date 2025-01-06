@@ -5,7 +5,8 @@ import HeroBanner from "../../components/HeroBanner/HeroBanner";
 import MediaSlideshow from "../../components/MediaSlideshow/MediaSlideshow";
 import Media from "../../models/Media";
 import MediaType from "../../models/MediaType";
-import { getAllMedias, getAllMediasByMediaType } from "../../services/MediaService";
+import Category from "../../models/Category";
+import { getAllMedias, getAllMediasByCategory, getAllMediasByMediaType } from "../../services/MediaService";
 import { toast } from "sonner";
 import "./Home.css";
 
@@ -14,6 +15,7 @@ const Home: React.FC = () => {
   const [movies, setMovies] = useState<Media[]>([]);
   const [series, setSeries] = useState<Media[]>([]);
   const [randomIndex, setRandomIndex] = useState(0);
+  const [allMediasByCategory, setAllMediasByCategroy] = useState<{ category: Category, medias: Media[] }[]>([]);
   const navigate = useNavigate();
 
   const HeroBannerShowMoreAction = (mediaId: string) => {
@@ -66,10 +68,38 @@ const Home: React.FC = () => {
         return;
       }
     };
+
+    const fetchMediasByCategory = async (category: Category) => {
+      try {
+        const fetchedMediasByCategroy = await getAllMediasByCategory(category);
+        switch(fetchedMediasByCategroy) {
+          case "Error in category request !": {
+            toast.error("Error in category request !");
+            return;
+          }
+          case "Internal servor error !": {
+            toast.error("Internal servor error !");
+            return;
+          }
+          default: {
+            setAllMediasByCategroy((prev) => [...prev, { category: category, medias: fetchedMediasByCategroy as Media[] }]);     
+            return;     
+          }
+        }
+      }
+      catch(err) {
+        toast.error("Internal servor error !");
+        return;
+      }
+    };
     
     fetchMedias();
     fetchMediasByMediaType(MediaType.Movie);
     fetchMediasByMediaType(MediaType.Series);
+
+    Object.values(Category).forEach((category) => {
+      fetchMediasByCategory(category);
+    });
   }, []);
 
   useEffect(() => {
@@ -81,9 +111,19 @@ const Home: React.FC = () => {
     <div className="Home">
       <Navbar />
       <HeroBanner backgroundImage={medias[randomIndex]?.largePicture ?? ""} backgroundVideo={medias[randomIndex]?.video ?? ""} title={medias[randomIndex]?.name} subtitle={medias[randomIndex]?.synopsis} showMoreAction={() => HeroBannerShowMoreAction(medias[randomIndex]?.id)} />
+      {/* TO IMPLEMENT : MediaSlideshow - Continue Watching */}
+      {/* TO IMPLEMENT : MediaSlideshow - Rewatch */}
+      {/* TO IMPLEMENT : MediaSlideshow - Recommendations */}
       <MediaSlideshow title="Latest Releases" medias={medias} />
       <MediaSlideshow title="Latest Movies" medias={movies} />
       <MediaSlideshow title="Latest Series" medias={series} />
+      {/* TO IMPLEMENT : MediaSlideshow - Most Viewed */}
+      {/* TO IMPLEMENT : MediaSlideshow - Most Rated */}
+      {allMediasByCategory.map(({ category, medias }) => (
+        medias.length > 0 && (
+          <MediaSlideshow key={category} title={category} medias={medias} />
+        )
+      ))}
     </div>
   );
 };
