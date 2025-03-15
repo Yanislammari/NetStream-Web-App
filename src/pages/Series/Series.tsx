@@ -22,7 +22,7 @@ const Series: React.FC = () => {
   };
 
   useEffect(() => {
-    const fetchSeriesByCategory = async (mediaType: MediaType = MediaType.Series ,category: Category) => {
+    const fetchSeriesByCategory = async (mediaType: MediaType = MediaType.Series, category: Category) => {
       try {
         const fetchedSeriesByCategroy = await getAllMediasByMediaTypeAndCategory(mediaType, category);
         switch(fetchedSeriesByCategroy) {

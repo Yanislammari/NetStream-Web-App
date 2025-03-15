@@ -10,6 +10,7 @@ import SeriesCategory from "./pages/SeriesCategory/SeriesCategory";
 import Movies from "./pages/Movies/Movies";
 import MoviesCategory from "./pages/MoviesCategory/MoviesCategory";
 import MediaDetails from "./pages/MediaDetails/MediaDetails";
+import Search from "./pages/Search/Search";
 import "./App.css";
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Route path="/movies" element={<Movies />} />
         <Route path="/movies/:category" element={<MoviesCategory />} />
         <Route path="/media/:mediaId" element={<MediaDetails />} />
+        <Route path="/search" element={<Search />} />
       </Routes>
     </BrowserRouter>
   );

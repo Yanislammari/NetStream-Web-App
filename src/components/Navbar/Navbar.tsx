@@ -3,10 +3,16 @@ import { useNavigate } from "react-router-dom";
 import { FaSearch, FaBell, FaBars } from "react-icons/fa";
 import "./Navbar.css";
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  isSearchOpen?: boolean;
+  searchInputDefaultValue?: string
+}
+
+const Navbar: React.FC<NavbarProps> = ({ isSearchOpen = false, searchInputDefaultValue = "" }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [searchQuery, setSearchQuery] = useState(searchInputDefaultValue);
   const navigate = useNavigate();
 
   const toggleMenu = () => {
@@ -15,6 +21,12 @@ const Navbar: React.FC = () => {
 
   const toggleSearch = () => {
     setSearchOpen(!searchOpen);
+  };
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+    navigate(`/search?q=${encodeURIComponent(query)}`);
   };
 
   useEffect(() => {
@@ -34,6 +46,10 @@ const Navbar: React.FC = () => {
     };
   }, []);
 
+  useEffect(() => {
+    setSearchOpen(isSearchOpen);
+  }, [isSearchOpen]);
+
   return (
     <div className="Navbar">
       <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
@@ -51,7 +67,7 @@ const Navbar: React.FC = () => {
         </div>
         <div className="navbar-icons">
           <div className="search-container">
-            <input className={`search-input ${searchOpen ? "show" : ""}`} type="text" placeholder="Search..." />
+            <input className={`search-input ${searchOpen ? "show" : ""}`} type="text" placeholder="Search..." value={searchQuery} onChange={handleSearchChange} />
             <FaSearch className="icon-search" onClick={toggleSearch} />
           </div>
           <FaBell className="icon-bell" />
